@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:57:45 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/14 19:38:21 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/15 18:35:32 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ void	cleanup_on_error(t_data *d, int stage)
 	{
 		i = 0;
 		while (i < d->nb_philo)
+		{
+			if (d->nb_philo == 1)
+			{
+				pthread_mutex_destroy(&d->forks[0]);
+				break ;
+			}
 			pthread_mutex_destroy(&d->forks[i++]);
+		}
 		pthread_mutex_destroy(&d->dead_lock);
 		pthread_mutex_destroy(&d->print_lock);
 	}

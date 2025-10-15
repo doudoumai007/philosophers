@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:09:16 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/14 15:11:44 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/15 18:51:50 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	d = philo->d;
-	while (1)
+	while (!is_dead(d))
 	{
-		if (is_dead(d))
-			break ;
 		think(philo);
-		take_forks(philo);
-		if (is_dead(d))
+		if (philo->d->nb_philo == 1)
+		{
+			handle_one_philo(philo);
 			break ;
+		}
+		take_forks(philo);
 		eat(philo);
 		put_forks(philo);
 		sleep_philo(philo);

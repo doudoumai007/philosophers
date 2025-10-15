@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:12:45 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/14 19:31:38 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/15 19:40:56 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ void	take_forks(t_philo *philo)
 
 	left = philo->id - 1;
 	right = philo->id % philo->d->nb_philo;
-	if (philo->d->nb_philo == 1)
-	{
-		handle_one_philo(philo);
-		return ;
-	}
 	if (philo->id % 2 == 1)
 	{
 		pthread_mutex_lock(&philo->d->forks[right]);
