@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:13:50 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 19:41:40 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/16 12:08:35 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_data
 	long long		start_time;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
-	// pthread_mutex_t	meal_lock;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	dead_lock;
 }	t_data;
@@ -64,11 +63,13 @@ void		eat(t_philo *philo);
 void		put_forks(t_philo *philo);
 void		sleep_philo(t_philo *philo);
 
+void		print_state(int id, t_data *d, char *msg);
+
 int			is_dead(t_data *d);
 long long	get_timestamp(void);
 void		ft_usleep(long long ms);
-void		print_state(int id, t_data *d, char *msg);
 int			ft_atoi(const char *str);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int			check_death(t_data *d);
 int			check_all_full(t_data *d);

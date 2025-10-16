@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:12:50 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 19:55:15 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/16 12:55:48 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,40 +41,41 @@ void	ft_usleep(long long ms)
 		usleep(100);
 }
 
-void	print_state(int id, t_data *d, char *msg)
-{
-	long long	time;
-
-	pthread_mutex_lock(&d->print_lock);
-	if (!d->dead)
-	{
-		time = get_timestamp() - d->start_time;
-		printf("%lld %d %s\n", time, id, msg);
-	}
-	pthread_mutex_unlock(&d->print_lock);
-}
-
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	sign;
+	int j;
 	int	nbr;
 
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	j = 0;
+	while (str[j])
 	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
+		if (str[j] < '0' && str[j] > '9')
+			return (0);
+		j++;
 	}
+	i = 0;
 	nbr = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr = 10 * nbr + (str[i] - '0');
 		i++;
 	}
-	return (sign * nbr);
+	return (nbr);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (s1[i] == '\0')
+			break ;
+		i++;
+	}
+	return (0);
 }

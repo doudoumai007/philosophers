@@ -6,7 +6,7 @@
 #    By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 14:54:02 by peiyli            #+#    #+#              #
-#    Updated: 2025/10/14 15:52:35 by peiyli           ###   ########.fr        #
+#    Updated: 2025/10/16 12:30:55 by peiyli           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ src/one_philo.c \
 src/routine.c \
 src/run_simulation.c \
 src/utils.c \
+src/print.c \
 
 OBJ = $(SRC:.c=.o)
 

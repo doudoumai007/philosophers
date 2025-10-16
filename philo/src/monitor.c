@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:12:37 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 19:43:23 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/16 12:26:17 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	check_death(t_data *d)
 		pthread_mutex_lock(&d->dead_lock);
 		if (get_timestamp() - d->philos[i].last_meal > d->time_to_die)
 		{
-			print_state(d->philos[i].id, d, "died");
 			d->dead = 1;
 			pthread_mutex_unlock(&d->dead_lock);
+			print_state(d->philos[i].id, d, "died");
 			return (1);
 		}
 		pthread_mutex_unlock(&d->dead_lock);
@@ -64,9 +64,9 @@ void	*monitor(void *arg)
 	{
 		if (check_death(d) || check_all_full(d))
 		{
-			pthread_mutex_lock(&d->dead_lock);
-			d->dead = 1;
-			pthread_mutex_unlock(&d->dead_lock);
+			// pthread_mutex_lock(&d->dead_lock);
+			// d->dead = 1;
+			// pthread_mutex_unlock(&d->dead_lock);
 			break ;
 		}
 		usleep(1000);
