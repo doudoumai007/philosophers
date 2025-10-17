@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:08:24 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 18:41:34 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/17 19:00:26 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	parse_args_and_initial_d(int ac, char *av[], t_data *d)
 	d->forks = malloc(sizeof(pthread_mutex_t) * d->nb_philo);
 	if (!d->forks)
 		return (printf("Error: malloc forks failed\n"), 1);
-	printf("forks[0] at %p\n", &d->forks[0]); //********//
 	d->philos = malloc(sizeof(t_philo) * d->nb_philo);
 	if (!d->philos)
 	{

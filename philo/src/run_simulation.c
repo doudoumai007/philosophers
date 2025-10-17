@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:09:16 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 18:51:50 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/10/17 11:27:23 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	d = philo->d;
+	if (philo->id % 2 == 0)
+		usleep(1000);
 	while (!is_dead(d))
 	{
 		think(philo);
