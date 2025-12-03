@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:12:50 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/16 12:55:48 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/12/01 12:58:00 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_usleep(long long ms)
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int j;
+	int	j;
 	int	nbr;
 
 	j = 0;

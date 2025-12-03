@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:12:37 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/16 12:26:17 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/12/01 12:57:18 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,7 @@ void	*monitor(void *arg)
 	while (1)
 	{
 		if (check_death(d) || check_all_full(d))
-		{
-			// pthread_mutex_lock(&d->dead_lock);
-			// d->dead = 1;
-			// pthread_mutex_unlock(&d->dead_lock);
 			break ;
-		}
 		usleep(1000);
 	}
 	return (NULL);

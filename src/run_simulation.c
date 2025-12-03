@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   run_simulation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 12:06:09 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/16 12:28:41 by peiyli           ###   ########.fr       */
+/*   Created: 2025/10/14 15:09:16 by peiyli            #+#    #+#             */
+/*   Updated: 2025/12/01 12:57:39 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-void	print_state(int id, t_data *d, char *msg)
+void	*routine(void *arg)
 {
-	long long	time;
-	int			if_dead;
+	t_philo	*philo;
+	t_data	*d;
 
-	if_dead = is_dead(d);
-	pthread_mutex_lock(&d->print_lock);
-	if (!if_dead || ft_strncmp(msg, "died", 4) == 0)
+	philo = (t_philo *)arg;
+	d = philo->d;
+	if (philo->id % 2 == 0)
+		ft_usleep(d->time_to_eat / 2);
+	while (!is_dead(d))
 	{
-		time = get_timestamp() - d->start_time;
-		printf("%lld %d %s\n", time, id, msg);
+		think(philo);
+		if (philo->d->nb_philo == 1)
+		{
+			handle_one_philo(philo);
+			break ;
+		}
+		take_forks(philo);
+		eat(philo);
+		put_forks(philo);
+		usleep(1000);
+		sleep_philo(philo);
 	}
-	pthread_mutex_unlock(&d->print_lock);
+	return (NULL);
 }

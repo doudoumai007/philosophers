@@ -6,7 +6,7 @@
 /*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:08:24 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/17 19:00:26 by peiyli           ###   ########.fr       */
+/*   Updated: 2025/12/01 12:57:04 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	initial_args(int ac, char *av[], t_data *d)
 		d->must_eat = -1;
 	if (d->nb_philo <= 0 || d->time_to_die <= 0
 		|| d->time_to_eat <= 0 || d->time_to_sleep <= 0)
-			return (printf("Error: invalid arguments\n"), 1);
+		return (printf("Error: invalid arguments\n"), 1);
 	return (0);
 }
 
